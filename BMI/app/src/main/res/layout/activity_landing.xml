@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".LandingActivity">
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textColor="@color/purple"
+        android:background="@android:color/transparent"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Header Section -->
+    <LinearLayout
+        android:id="@+id/llHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp">
+
+        <!-- Header: "Welcome," -->
+        <TextView
+            android:id="@+id/landingHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome,"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Name -->
+        <TextView
+            android:id="@+id/landingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[Username]"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Instruction -->
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please enter your height and weight to calculate your BMI"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Height & Weight -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Height (cm)"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llHeader">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Height Warning -->
+    <TextView
+        android:id="@+id/heightWarning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_3"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/tilHeight"
+        app:layout_constraintEnd_toEndOf="@id/tilHeight"
+        app:layout_constraintTop_toBottomOf="@id/tilHeight" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Weight (kg)"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heightWarning">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Weight Warning -->
+    <TextView
+        android:id="@+id/weightWarning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_3"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/tilWeight"
+        app:layout_constraintEnd_toEndOf="@id/tilWeight"
+        app:layout_constraintTop_toBottomOf="@id/tilWeight" />
+
+    <!-- Calculate Button -->
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Calculate BMI"
+        android:backgroundTint="@color/purple"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightWarning"/>
+
+    <!-- BMI Results -->
+    <LinearLayout
+        android:id="@+id/llResults"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="invisible"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCalculate">
+
+        <!-- BMI Label -->
+        <TextView
+            android:id="@+id/tvBmiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your BMI is..."
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+        <!-- BMI Number -->
+        <TextView
+            android:id="@+id/tvBmiNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp" />
+
+        <!-- BMI Context -->
+        <TextView
+            android:id="@+id/tvBmiContext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[BMI Category]"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
